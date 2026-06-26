@@ -1,0 +1,173 @@
+:root {
+  --bg-gradient: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
+  --glass-bg: rgba(15, 23, 42, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #ef4444; /* Rose/Red for Access Denied */
+  --accent-glow: rgba(239, 68, 68, 0.4);
+  --card-radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Glassmorphic Container Card */
+.glass-card {
+  max-width: 550px;
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius);
+  padding: 48px;
+  box-shadow: 0 24px 64px 0 rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  transform: translateY(20px);
+  animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes floatIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+/* Floating glowing shield icon */
+.icon-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  margin-bottom: 8px;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+  animation: hoverAnimation 4s ease-in-out infinite;
+}
+
+@keyframes hoverAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.25);
+  }
+}
+
+.shield-icon {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: var(--accent-color);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, #fca5a5, #f43f5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* Quotes area styling */
+.quote-box {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--accent-color);
+  border-right: 3px solid transparent;
+  padding: 20px 24px;
+  border-radius: 8px;
+  margin: 12px 0;
+  text-align: left;
+}
+
+.quote-text {
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: italic;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.quote-author {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Action button */
+.btn {
+  background: var(--text-primary);
+  color: #0f172a;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}

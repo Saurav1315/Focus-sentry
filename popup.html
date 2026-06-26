@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Sentry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-area">
+        <svg class="logo-icon" viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M12 8v4l3 3"/>
+        </svg>
+        <span class="logo-text">Focus Sentry</span>
+      </div>
+      <span class="badge" id="mode-badge">Active</span>
+    </div>
+
+    <!-- Active Timer View -->
+    <div class="glass-card active-state" id="active-timer-view">
+      <div class="timer-circle">
+        <svg class="timer-svg">
+          <circle class="timer-bg-circle" cx="70" cy="70" r="60"></circle>
+          <circle class="timer-progress-circle" id="progress-bar" cx="70" cy="70" r="60" stroke-dasharray="377" stroke-dashoffset="0"></circle>
+        </svg>
+        <div class="time-display" id="time-left">25:00</div>
+      </div>
+      <div class="status-text pulse" id="status-message">Stay focused...</div>
+      <button class="btn btn-danger" id="btn-stop-focus" style="width: 100%;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+        </svg>
+        Stop Session
+      </button>
+    </div>
+
+    <!-- Normal Settings View -->
+    <div class="glass-card" id="settings-view">
+      <div class="timer-setup">
+        <h3>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          Configure Timer
+        </h3>
+        <div class="form-row">
+          <label for="timer-select">Select Duration</label>
+          <select id="timer-select">
+            <option value="1">1 Minute (Test)</option>
+            <option value="5">5 Minutes</option>
+            <option value="15">15 Minutes</option>
+            <option value="25" selected>25 Minutes (Pomodoro)</option>
+            <option value="50">50 Minutes</option>
+            <option value="60">60 Minutes</option>
+          </select>
+        </div>
+        <button class="btn" id="btn-start-focus">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          Start Focus Session
+        </button>
+      </div>
+    </div>
+
+    <!-- Blocked Websites List Card -->
+    <div class="glass-card" id="blocked-list-card">
+      <h3>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Blocked Domains
+      </h3>
+      <div class="input-group">
+        <input type="text" id="domain-input" placeholder="e.g. facebook.com" />
+        <button class="btn btn-secondary" id="btn-add-domain">Add</button>
+      </div>
+      <div class="domain-list" id="domain-list-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

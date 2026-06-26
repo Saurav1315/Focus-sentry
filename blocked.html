@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Sentry | Access Denied</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+  <div class="glass-card">
+    <div class="icon-container">
+      <svg class="shield-icon" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <line x1="9" y1="11" x2="15" y2="11"/>
+      </svg>
+    </div>
+    
+    <h1>Focus Mode Active</h1>
+    <p class="subtitle">Focus Sentry has intercepted your request. This domain is currently restricted to keep you productive.</p>
+    
+    <!-- Quote Section -->
+    <div class="quote-box">
+      <div class="quote-text" id="quote">"Focus on being productive instead of busy."</div>
+      <div class="quote-author" id="author">— Tim Ferriss</div>
+    </div>
+    
+    <button class="btn" id="btn-close-tab">
+      Close Tab
+      <svg class="btn-svg" viewBox="0 0 24 24" fill="none">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    // Motivational Study Quotes Array
+    const quotes = [
+      { text: "Your focus determines your reality.", author: "Qui-Gon Jinn" },
+      { text: "Focus on being productive instead of busy.", author: "Tim Ferriss" },
+      { text: "Don't wish it were easier. Wish you were better.", author: "Jim Rohn" },
+      { text: "Work hard in silence, let your success be your noise.", author: "Frank Ocean" },
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { text: "Amateurs sit and wait for inspiration, the rest of us just get up and go to work.", author: "Stephen King" },
+      { text: "You do not rise to the level of your goals. You fall to the level of your systems.", author: "James Clear" },
+      { text: "There is no traffic jam along the extra mile.", author: "Roger Staubach" }
+    ];
+
+    // Pick a random quote on page load
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('quote').textContent = `"${randomQuote.text}"`;
+    document.getElementById('author').textContent = `— ${randomQuote.author}`;
+
+    // Close current tab functionality
+    document.getElementById('btn-close-tab').addEventListener('click', () => {
+      // Access the Chrome extension API to close the current tab
+      chrome.tabs.getCurrent((tab) => {
+        if (tab) {
+          chrome.tabs.remove(tab.id);
+        } else {
+          // Fallback if not running inside a standard tab context
+          window.close();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
