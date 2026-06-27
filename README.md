@@ -2,6 +2,14 @@
 
 A premium Manifest V3 Chrome Extension that blocks distracting websites to keep you focused. Built with a glassmorphic dark-mode interface and an event-driven background service worker.
 
+## 📸 Previews
+
+<p align="center">
+  <img src="icons/popup.png" width="350" alt="Focus Sentry Popup Dashboard" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="icons/blocked.png" width="450" alt="Blocked Website Redirect Screen" />
+</p>
+
 ---
 
 ## ⚡ Tech & Architecture highlights
